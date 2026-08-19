@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>The Last Candle — a trading-floor thriller</title>
+<meta name="description" content="The Last Candle: a narrative thriller about a retail trader who finds the seams in a coordinated pump. Fiction. Not financial advice." />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0e15'/%3E%3Crect x='14' y='6' width='4' height='20' rx='1.5' fill='%23f0a24a'/%3E%3Crect x='11' y='11' width='10' height='10' rx='2' fill='%23ffce8a'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/theme.css" />
+<link rel="stylesheet" href="styles/layout.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/scenes.css" />
+</head>
+<body>
+
+<canvas id="rain" aria-hidden="true"></canvas>
+<div id="cityglow" aria-hidden="true"></div>
+<div id="vignette" aria-hidden="true"></div>
+
+<!-- ============================ TITLE ============================ -->
+<main id="title-screen" class="screen screen--title is-active">
+  <div class="title-inner">
+    <p class="title-kicker">An original fiction</p>
+    <h1 class="title-logo"><span class="title-logo__the">The</span> Last Candle</h1>
+    <p class="title-tag">Every chart tells a story. Somebody wrote this one first.</p>
+
+    <nav class="title-menu" aria-label="Main menu">
+      <button class="tbtn tbtn--primary" data-menu="new">
+        <span class="tbtn__label">Open the desk</span>
+        <span class="tbtn__sub">Begin a new session — three market days</span>
+      </button>
+      <button class="tbtn" data-menu="continue" disabled>
+        <span class="tbtn__label">Resume session</span>
+        <span class="tbtn__sub" id="continue-sub">No saved session found</span>
+      </button>
+      <button class="tbtn" data-menu="endings">
+        <span class="tbtn__label">The Ledger</span>
+        <span class="tbtn__sub"><span id="endings-count">0</span> of 6 endings recorded</span>
+      </button>
+      <button class="tbtn" data-menu="about">
+        <span class="tbtn__label">About &amp; content note</span>
+        <span class="tbtn__sub">What this is, and what it isn't</span>
+      </button>
+    </nav>
+
+    <p class="title-note">Fiction. Fictional companies, tickers, platforms and people.
+      Nothing here is financial advice, and none of it is a real market.</p>
+  </div>
+</main>
+
+<!-- ============================ GAME ============================ -->
+<div id="game-screen" class="screen screen--game" hidden>
+
+  <header class="topbar">
+    <button class="iconbtn" id="btn-menu" title="Session menu" aria-label="Session menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="topbar__id">
+      <span class="brand">THE LAST CANDLE</span>
+      <span class="handle" id="hud-handle">@nightdesk</span>
+    </div>
+
+    <div class="clockrail" id="clockrail" aria-label="Market day progress"></div>
+
+    <div class="topbar__right">
+      <div class="tapechip" id="tapechip">
+        <span class="tapechip__sym">HALX</span>
+        <span class="tapechip__px" id="tapechip-px">—</span>
+        <span class="tapechip__chg" id="tapechip-chg">—</span>
+      </div>
+      <button class="iconbtn" id="btn-audio" title="Ambience" aria-label="Toggle ambience" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9c1 1 1 5 0 6" class="wave"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="deck">
+
+    <!-- LEFT: status -->
+    <aside class="rail rail--left" id="rail-left">
+      <section class="panel panel--acct">
+        <h2 class="panel__title">Account</h2>
+        <div class="acct">
+          <div class="acct__equity">
+            <span class="acct__label">Equity</span>
+            <span class="acct__value" id="hud-capital">$0</span>
+            <span class="acct__delta" id="hud-capital-delta"></span>
+          </div>
+          <div class="acct__pos" id="hud-position">Flat — no open risk</div>
+        </div>
+        <div class="meters" id="hud-meters"></div>
+      </section>
+
+      <section class="panel panel--people">
+        <h2 class="panel__title">The room around you</h2>
+        <ul class="people" id="hud-people"></ul>
+      </section>
+
+      <section class="panel panel--focus">
+        <h2 class="panel__title">Focus</h2>
+        <div class="focus" id="hud-focus"></div>
+        <p class="focus__hint">Attention is finite. Every look costs one.</p>
+      </section>
+    </aside>
+
+    <!-- CENTER: scene -->
+    <main class="stage" id="stage">
+      <div class="stage__scroll" id="stage-scroll">
+        <div class="slug" id="scene-slug"></div>
+        <article class="prose" id="scene-prose" aria-live="polite"></article>
+        <div class="choices" id="scene-choices" role="group" aria-label="Choices"></div>
+      </div>
+      <div class="stage__fade" aria-hidden="true"></div>
+    </main>
+
+    <!-- RIGHT: instruments -->
+    <aside class="rail rail--right" id="rail-right">
+      <div class="tabs" role="tablist" aria-label="Desk instruments">
+        <button class="tab is-active" role="tab" data-tab="tape" aria-selected="true">Tape</button>
+        <button class="tab" role="tab" data-tab="room" aria-selected="false">Room<span class="tab__dot" id="room-dot" hidden></span></button>
+        <button class="tab" role="tab" data-tab="board" aria-selected="false">Board<span class="tab__dot" id="board-dot" hidden></span></button>
+      </div>
+
+      <section class="panel panel--tape tabpane is-active" id="pane-tape" role="tabpanel">
+        <div class="tapehead">
+          <div>
+            <div class="tapehead__sym">HALX <span>Halcyon Exogrid Inc.</span></div>
+            <div class="tapehead__meta" id="tape-meta">float 4.1M · sim feed</div>
+          </div>
+          <div class="tapehead__px">
+            <div class="tapehead__last" id="tape-last">—</div>
+            <div class="tapehead__chg" id="tape-chg">—</div>
+          </div>
+        </div>
+        <canvas id="chart" height="240"></canvas>
+        <div class="tapefoot" id="tape-foot"></div>
+      </section>
+
+      <section class="panel panel--room tabpane" id="pane-room" role="tabpanel" hidden>
+        <div class="roomhead">
+          <span class="roomhead__name">#the-candle-room</span>
+          <span class="roomhead__count" id="room-count">— online</span>
+        </div>
+        <div class="chatlog" id="chatlog"></div>
+      </section>
+
+      <section class="panel panel--board tabpane" id="pane-board" role="tabpanel" hidden>
+        <div class="boardhead">
+          <span>Evidence board</span>
+          <span class="boardhead__stat" id="board-stat">0 verified</span>
+        </div>
+        <div class="boardwrap">
+          <svg class="boardlines" id="boardlines" aria-hidden="true"></svg>
+          <div class="board" id="board"></div>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+</div>
+
+<!-- ============================ ENDING ============================ -->
+<div id="ending-screen" class="screen screen--ending" hidden>
+  <div class="ending" id="ending-body"></div>
+</div>
+
+<!-- ============================ OVERLAY ============================ -->
+<div id="overlay" class="overlay" hidden>
+  <div class="overlay__sheet" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+    <button class="overlay__close" id="overlay-close" aria-label="Close">&times;</button>
+    <h2 id="overlay-title"></h2>
+    <div id="overlay-body"></div>
+  </div>
+</div>
+
+<script src="src/util.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/rain.js"></script>
+<script src="src/characters.js"></script>
+<script src="src/evidence.js"></script>
+<script src="src/state.js"></script>
+<script src="src/chart.js"></script>
+<script src="src/room.js"></script>
+<script src="src/board.js"></script>
+<script src="src/story-day1.js"></script>
+<script src="src/story-day2.js"></script>
+<script src="src/story-day3.js"></script>
+<script src="src/endings.js"></script>
+<script src="src/story.js"></script>
+<script src="src/ui.js"></script>
+<script src="src/game.js"></script>
+</body>
+</html>
