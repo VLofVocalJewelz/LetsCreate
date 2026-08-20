@@ -1,8 +1,0 @@
-cd ~/Downloads                                   # or wherever the file saved
-
-git clone last-candle-repo.bundle LetsCreate
-cd LetsCreate
-
-git remote set-url origin https://github.com/VLofVocalJewelz/LetsCreate.git
-git push -u origin claude/last-candle-game-g08usz
-
