@@ -1,0 +1,113 @@
+/* ============================================================
+   THE LAST CANDLE — theme tokens, reset, atmosphere
+   ============================================================ */
+
+:root{
+  /* surfaces: a room lit only by monitors */
+  --ink-000:#04060a;
+  --ink-050:#070b12;
+  --ink-100:#0b1119;
+  --ink-200:#101822;
+  --ink-300:#16202c;
+  --line:rgba(150,180,220,.14);
+  --line-soft:rgba(150,180,220,.08);
+
+  /* type */
+  --text:#e7ecf5;
+  --text-2:#a8b4c7;
+  --text-3:#6c7a90;
+  --text-4:#4a5666;
+
+  /* signal */
+  --ember:#f0a24a;         /* the candle */
+  --ember-hot:#ffce8a;
+  --bid:#3ddc97;
+  --ask:#ff5a6a;
+  --data:#6fd3ff;
+  --violet:#a98bff;
+  --warn:#ffd166;
+
+  --glass:rgba(255,255,255,.035);
+  --glass-2:rgba(255,255,255,.055);
+  --shadow-lg:0 30px 80px -30px rgba(0,0,0,.9), 0 2px 0 rgba(255,255,255,.03) inset;
+  --shadow-sm:0 10px 30px -18px rgba(0,0,0,.9);
+
+  --r-sm:8px; --r-md:12px; --r-lg:18px; --r-xl:26px;
+
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --rail-l:300px;
+  --rail-r:376px;
+  --top-h:56px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  /* the ground is painted on the body itself so the page never borrows the host's */
+  background:
+    radial-gradient(1100px 700px at 78% 14%, rgba(58,96,160,.22), transparent 62%),
+    radial-gradient(760px 560px at 12% 82%, rgba(240,162,74,.10), transparent 66%),
+    var(--ink-000);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow:hidden;
+}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.01em}
+p{margin:0 0 1em}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{margin:0;padding:0;list-style:none}
+svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+::selection{background:rgba(240,162,74,.3)}
+
+/* --- ambience layers ------------------------------------------------ */
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.55;pointer-events:none}
+#cityglow{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(1100px 700px at 78% 14%, rgba(58,96,160,.30), transparent 62%),
+    radial-gradient(760px 560px at 12% 82%, rgba(240,162,74,.13), transparent 66%),
+    radial-gradient(900px 900px at 50% 120%, rgba(169,139,255,.10), transparent 60%),
+    linear-gradient(180deg,#05080e 0%, #070b12 45%, #04060a 100%);
+}
+#vignette{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 50% 45%, transparent 40%, rgba(0,0,0,.62) 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 1px, transparent 1px 3px);
+  mix-blend-mode:normal;
+}
+body.is-tense #cityglow{background:
+    radial-gradient(1100px 700px at 78% 14%, rgba(160,58,74,.26), transparent 62%),
+    radial-gradient(760px 560px at 12% 82%, rgba(240,162,74,.16), transparent 66%),
+    linear-gradient(180deg,#0a0609 0%, #0b0810 45%, #04060a 100%);}
+#cityglow{transition:background 2.4s ease}
+
+/* --- scaffolding ---------------------------------------------------- */
+.screen{position:fixed;inset:0;z-index:2;display:none}
+.screen.is-active{display:block}
+.screen--game.is-active{display:grid;grid-template-rows:var(--top-h) 1fr}
+
+/* --- scrollbars ----------------------------------------------------- */
+*{scrollbar-width:thin;scrollbar-color:rgba(150,180,220,.22) transparent}
+*::-webkit-scrollbar{width:9px;height:9px}
+*::-webkit-scrollbar-thumb{background:rgba(150,180,220,.20);border-radius:99px;border:2px solid transparent;background-clip:content-box}
+*::-webkit-scrollbar-thumb:hover{background:rgba(150,180,220,.34);background-clip:content-box}
+*::-webkit-scrollbar-track{background:transparent}
+
+/* --- utility -------------------------------------------------------- */
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.up{color:var(--bid)} .down{color:var(--ask)} .em{color:var(--ember)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  #rain{opacity:.25}
+}

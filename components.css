@@ -208,3 +208,32 @@
 .toast--ember{border-color:rgba(240,162,74,.45);color:#ffdcae}
 @keyframes toastin{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
 .toast.is-out{opacity:0;transform:translateX(24px);transition:.4s}
+
+/* ---------- objective ---------- */
+.objective{font-size:12.5px;color:var(--text-2);line-height:1.55;margin:0}
+
+/* ---------- location map ---------- */
+.locmap{display:flex;flex-direction:column;gap:4px}
+.loc{
+  display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--r-sm);
+  border:1px solid transparent;font-size:12.5px;color:var(--text-2);transition:.18s;text-align:left;width:100%;
+}
+.loc:hover:not(:disabled){background:var(--glass-2);color:var(--text);border-color:var(--line)}
+.loc__dot{width:8px;height:8px;border-radius:99px;border:1.5px solid;flex:0 0 8px}
+.loc__name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.loc__lock{font-size:10px;opacity:.5}
+.loc.is-here{background:rgba(240,162,74,.12);border-color:rgba(240,162,74,.34);color:var(--ember-hot);cursor:default}
+.loc.is-locked{opacity:.4;cursor:not-allowed}
+
+/* ---------- ori gets a colour of his own ---------- */
+.msg--ori .msg__who{color:#8fa3bd}
+.msg--ori .msg__txt{color:#c3cfe0}
+
+/* ---------- settings ---------- */
+.setrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px}
+.setbtn{
+  padding:8px 14px;border-radius:99px;border:1px solid var(--line);font-size:12.5px;
+  background:rgba(255,255,255,.04);color:var(--text-2);transition:.18s;text-transform:capitalize;
+}
+.setbtn:hover{border-color:rgba(240,162,74,.45);color:var(--text)}
+.setbtn.is-on{background:rgba(240,162,74,.18);border-color:rgba(240,162,74,.5);color:var(--ember-hot)}
