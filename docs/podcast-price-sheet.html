@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VocalJewelz LLC | Podcast Production Rate Card</title>
+<style>
+  @page { size: Letter portrait; margin: 0.5in; }
+
+  :root{
+    --ink:#22221E;
+    --ink-soft:#55554C;
+    --green:#3B533C;
+    --sage:#7CA982;
+    --cream:#F9F6EE;
+    --tan:#C2B29F;
+    --display:'Oswald','Arial Narrow','Roboto Condensed','Helvetica Neue',Helvetica,Arial,sans-serif;
+    --body:'Spline Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;padding:0;
+    background:#E7E1D3;
+    color:var(--ink);
+    font-family:var(--body);
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  .page{
+    width:8.5in;
+    min-height:11in;
+    padding:0.5in;
+    margin:0 auto 22px;
+    background:var(--cream);
+    border:1px solid var(--tan);
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{display:flex;justify-content:space-between;align-items:flex-end;gap:22pt;
+    border-bottom:2.5pt solid var(--green);padding-bottom:5pt;}
+  .brand{font-family:var(--display);font-weight:600;font-size:23pt;line-height:0.9;
+    letter-spacing:0.6pt;text-transform:uppercase;color:var(--green);}
+  .brand .suffix{font-size:10.5pt;letter-spacing:2.6pt;color:var(--sage);display:block;margin-top:4pt;}
+  .doclabel{font-family:var(--display);font-weight:500;font-size:8.5pt;letter-spacing:2pt;
+    text-transform:uppercase;color:var(--sage);text-align:right;white-space:nowrap;}
+  .tagline{font-family:var(--display);font-weight:500;font-size:12.5pt;line-height:1.3;
+    letter-spacing:0.3pt;color:var(--green);max-width:6.4in;margin:9pt 0 0;
+    border-left:2.5pt solid var(--sage);padding-left:11pt;}
+  .positioning{font-size:11pt;line-height:1.3;max-width:6.1in;margin:6pt 0 0;color:var(--ink);}
+
+  /* ---------- section headers ---------- */
+  .sec-h{font-family:var(--display);font-weight:500;font-size:9pt;letter-spacing:2.6pt;
+    text-transform:uppercase;color:var(--green);border-top:0.75pt solid var(--tan);
+    padding-top:4pt;margin:5pt 0 0;break-after:avoid;page-break-after:avoid;}
+
+  /* ---------- how it works ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:4pt;}
+  .step{padding:0 14pt;border-left:0.75pt solid var(--tan);}
+  .step:first-child{padding-left:0;border-left:none;}
+  .step .n{font-family:var(--display);font-weight:600;font-size:11pt;letter-spacing:1pt;color:var(--sage);margin-right:5pt;}
+  .step p{font-size:10.5pt;line-height:1.3;margin:0;}
+
+  /* ---------- tiers ---------- */
+  .tiers{display:grid;grid-template-columns:1fr 1.2fr 1.06fr;gap:14pt;align-items:start;margin-top:3pt;}
+  .tier{display:flex;flex-direction:column;background:transparent;border:none;border-top:2pt solid var(--green);padding:7pt 0 0;
+    break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .tier.growth{background:var(--green);border-top:none;color:var(--cream);padding:0 0 13pt;margin-top:-13pt;}
+  .growth .badge{display:block;background:var(--sage);color:var(--green);font-family:var(--display);
+    font-weight:600;font-size:8pt;letter-spacing:2.2pt;text-transform:uppercase;padding:4pt 12pt;}
+  .growth .inner{display:flex;flex-direction:column;flex:1 1 auto;padding:8pt 11pt 0;}
+
+  .tier .name{font-family:var(--display);font-weight:500;font-size:13pt;letter-spacing:1.6pt;
+    text-transform:uppercase;color:var(--green);line-height:1;}
+  .growth .name{color:var(--cream);font-size:18pt;}
+  .price{font-family:var(--display);font-weight:600;font-size:20pt;line-height:1;color:var(--ink);margin-top:3pt;}
+  .growth .price{font-size:29pt;color:var(--cream);}
+  .permo{font-size:8pt;letter-spacing:1.3pt;text-transform:uppercase;color:var(--ink-soft);margin-top:2pt;}
+  .growth .permo{color:var(--sage);}
+  .vol{font-family:var(--display);font-weight:500;font-size:10.5pt;letter-spacing:0.9pt;text-transform:uppercase;
+    color:var(--green);border-top:0.75pt solid var(--tan);border-bottom:0.75pt solid var(--tan);
+    padding:3pt 0;margin:4pt 0;}
+  .growth .vol{color:var(--cream);border-color:rgba(249,246,238,0.4);}
+
+  .cap{font-family:var(--display);font-weight:500;font-size:8pt;letter-spacing:1pt;
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 3pt;}
+  .growth .cap{color:var(--sage);}
+  ul.deliv{list-style:none;padding:0;margin:0;}
+  ul.deliv li{font-size:10pt;line-height:1.2;padding-left:8pt;margin-bottom:1.6pt;position:relative;}
+  ul.deliv li::before{content:"";position:absolute;left:0;top:3.6pt;width:3pt;height:3pt;
+    background:var(--sage);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  .fit{margin-top:5pt;padding-top:6pt;border-top:0.75pt solid var(--tan);
+    font-size:10pt;line-height:1.24;color:var(--ink-soft);}
+  .growth .fit{border-color:rgba(249,246,238,0.4);color:var(--sage);margin-bottom:0;}
+
+  /* ---------- upgrade credit ---------- */
+  .upgrade{border-top:2pt solid var(--green);margin-top:5pt;padding-top:5pt;
+    font-size:10.5pt;line-height:1.32;color:var(--green);}
+  .upgrade .lbl{font-family:var(--display);font-weight:600;font-size:9pt;letter-spacing:2pt;
+    text-transform:uppercase;color:var(--green);margin-right:9pt;}
+
+  /* ---------- exclusions ---------- */
+  .excl{font-size:10pt;line-height:1.32;color:var(--ink-soft);border-top:0.75pt solid var(--tan);
+    margin-top:4pt;padding-top:4pt;}
+
+  /* ---------- add-ons ---------- */
+  table{width:100%;border-collapse:collapse;margin-top:8pt;}
+  th{font-family:var(--display);font-weight:500;font-size:8.5pt;letter-spacing:2pt;text-transform:uppercase;
+    text-align:left;color:var(--green);border-bottom:1pt solid var(--green);padding:0 0 5pt;}
+  th.req{text-align:right;white-space:nowrap;letter-spacing:1.4pt;}
+  td{font-size:10.5pt;line-height:1.32;padding:7.5pt 0;border-bottom:0.75pt solid var(--tan);vertical-align:top;}
+  td.nm{font-family:var(--display);font-weight:500;font-size:11pt;letter-spacing:0.4pt;color:var(--green);
+    width:1.9in;padding-right:14pt;}
+  td.req{text-align:right;font-family:var(--display);font-weight:500;font-size:9.5pt;letter-spacing:1.4pt;
+    text-transform:uppercase;color:var(--sage);width:1.05in;}
+  .table-note{font-size:10.5pt;line-height:1.35;color:var(--ink-soft);margin:10pt 0 0;}
+
+  /* ---------- faq ---------- */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:16pt 30pt;margin-top:11pt;}
+  .faq section{break-inside:avoid;page-break-inside:avoid;}
+  .faq h3{font-family:var(--display);font-weight:500;font-size:11pt;letter-spacing:1pt;
+    text-transform:uppercase;color:var(--green);margin:0 0 3pt;}
+  .faq p{font-size:10.5pt;line-height:1.4;margin:0;}
+
+  /* ---------- footer ---------- */
+  .foot{border-top:2.5pt solid var(--green);margin-top:18pt;padding-top:10pt;
+    display:flex;justify-content:space-between;align-items:flex-start;gap:26pt;
+    break-inside:avoid;page-break-inside:avoid;}
+  .foot .who{font-family:var(--display);font-weight:500;font-size:13pt;letter-spacing:1.6pt;
+    text-transform:uppercase;color:var(--green);}
+  .foot .mail{font-size:11.5pt;margin-top:4pt;color:var(--ink);}
+  .foot .best{font-size:9.5pt;color:var(--ink-soft);margin-top:2pt;}
+  .cta{text-align:right;max-width:3.4in;}
+  .cta .big{font-family:var(--display);font-weight:500;font-size:13pt;line-height:1.2;
+    letter-spacing:0.6pt;text-transform:uppercase;color:var(--green);}
+  .cta .sub{font-size:10.5pt;line-height:1.35;color:var(--ink-soft);margin-top:4pt;}
+  .rates{font-size:8pt;letter-spacing:0.4pt;color:#8A8A7E;margin-top:10pt;}
+
+  .runhead{display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--display);font-weight:500;font-size:8.5pt;letter-spacing:2pt;
+    text-transform:uppercase;color:var(--sage);border-bottom:0.75pt solid var(--tan);
+    padding-bottom:5pt;margin:0 0 14pt;}
+
+  /* ---------- print ---------- */
+  @media print{
+    html,body{background:var(--cream);}
+    .page{width:auto;min-height:0;padding:0;margin:0;border:none;}
+    .page + .page{break-before:page;page-break-before:always;}
+  }
+
+  /* ---------- phone ---------- */
+  @media screen and (max-width:700px){
+    .page{width:100%;min-height:0;padding:22px 18px;margin-bottom:14px;}
+    .masthead{flex-direction:column;align-items:flex-start;gap:10pt;}
+    .doclabel{text-align:left;}
+    .tagline{font-size:12.5pt;max-width:none;padding-left:9pt;}
+    .steps{grid-template-columns:1fr;}
+    .step{padding:8pt 0 0;border-left:none;border-top:0.75pt solid var(--tan);margin-top:8pt;}
+    .step:first-child{border-top:none;margin-top:0;padding-top:0;}
+    .tiers{grid-template-columns:1fr;gap:16pt;}
+    .tier.growth{margin-top:0;}
+    .faq{grid-template-columns:1fr;}
+    .runhead{flex-wrap:wrap;gap:2pt 12pt;letter-spacing:1.4pt;}
+    .foot{flex-direction:column;gap:14pt;}
+    .cta{text-align:left;max-width:none;}
+    td.nm{width:40%;}
+    td.req{width:20%;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 ============================ -->
+<div class="page">
+
+  <header class="masthead">
+    <div class="brand">VocalJewelz<span class="suffix">LLC</span></div>
+    <div class="doclabel">Podcast production rate card</div>
+  </header>
+
+  <p class="positioning">The blog posts, newsletters, webinars, and internal documents you already own, produced into finished podcast episodes and published on your feed.</p>
+
+  <p class="tagline">We take it off the page and put it in the room.<br>You wrote it in silence. We release it with sound.</p>
+
+  <h2 class="sec-h">How it works</h2>
+  <div class="steps">
+    <div class="step"><p><span class="n">01</span>Send the material you already have.</p></div>
+    <div class="step"><p><span class="n">02</span>We script, produce, and publish each episode.</p></div>
+    <div class="step"><p><span class="n">03</span>Your show releases on a set calendar.</p></div>
+  </div>
+
+  <h2 class="sec-h">Monthly retainers</h2>
+  <div class="tiers">
+
+    <!-- STARTER -->
+    <div class="tier">
+      <div class="name">Starter</div>
+      <div class="price">$1,200</div>
+      <div class="permo">Per month</div>
+      <div class="vol">2 episodes monthly</div>
+      <p class="cap">Per episode</p>
+      <ul class="deliv">
+        <li>Two published episodes</li>
+        <li>Episode script</li>
+        <li>Produced audio master</li>
+        <li>Voice track, AI or host</li>
+        <li>Show notes</li>
+        <li>Full transcript</li>
+        <li>Episode title and description</li>
+        <li>Upload to your host</li>
+      </ul>
+      <p class="fit">For a first show built from your archive.</p>
+    </div>
+
+    <!-- GROWTH -->
+    <div class="tier growth">
+      <div class="badge">Most popular</div>
+      <div class="inner">
+        <div class="name">Growth</div>
+        <div class="price">$3,600</div>
+        <div class="permo">Per month</div>
+        <div class="vol">4 episodes monthly</div>
+        <p class="cap">Per episode</p>
+        <ul class="deliv">
+          <li>Four published episodes</li>
+          <li>Episode script</li>
+          <li>Produced audio master</li>
+          <li>Voice track, AI or host</li>
+          <li>Recorded intro and outro</li>
+          <li>SEO show notes</li>
+          <li>Timestamped transcript</li>
+          <li>Chapter markers</li>
+          <li>Blog version of the episode</li>
+          <li>Newsletter draft</li>
+          <li>Three audiograms</li>
+          <li>Four captioned social clips</li>
+          <li>Five pull quote graphics</li>
+          <li>Three title options</li>
+          <li>Upload and release scheduling</li>
+          <li>YouTube audio upload</li>
+          <li>Monthly episode report</li>
+        </ul>
+        <p class="fit">For a weekly channel with a full clip set.</p>
+      </div>
+    </div>
+
+    <!-- STUDIO -->
+    <div class="tier">
+      <div class="name">Studio</div>
+      <div class="price">$8,000</div>
+      <div class="permo">Per month</div>
+      <div class="vol">8 episodes monthly</div>
+      <p class="cap">Per episode</p>
+      <ul class="deliv">
+        <li>Eight published episodes</li>
+        <li>Episode script</li>
+        <li>Produced audio master</li>
+        <li>Voice track, AI or host</li>
+        <li>Recorded intro and outro</li>
+        <li>SEO show notes</li>
+        <li>Timestamped transcript</li>
+        <li>Chapter markers</li>
+        <li>Long form blog version</li>
+        <li>Two newsletter drafts</li>
+        <li>LinkedIn post draft</li>
+        <li>Five audiograms</li>
+        <li>Eight captioned clips</li>
+        <li>Ten pull quote graphics</li>
+        <li>Five title options</li>
+        <li>Upload and scheduling</li>
+        <li>YouTube audio upload</li>
+        <li>Monthly episode report</li>
+        <li>Quarterly season plan</li>
+        <li>Quarterly show trailer</li>
+        <li>Named producer</li>
+      </ul>
+      <p class="fit">For a twice weekly cadence at scale.</p>
+    </div>
+
+  </div>
+
+  <p class="upgrade"><span class="lbl">Upgrade credit</span>Move up any time. What you already paid this month at Starter or Growth applies to the higher tier the day you upgrade, so you pay only the difference.</p>
+
+  <p class="excl">No tier includes guest booking, live recording, ad sales or sponsorship, cover art design, music licensing, or your hosting fees, and special requests can be settled before production starts.</p>
+
+</div>
+
+<!-- ============================ PAGE 2 ============================ -->
+<div class="page">
+
+  <div class="runhead"><span>VocalJewelz LLC</span><span>Podcast production rate card</span></div>
+
+  <h2 class="sec-h" style="border-top:none;margin-top:0;padding-top:0;">A la carte add-ons</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Add-on</th>
+        <th>What you receive</th>
+        <th class="req">On request</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="nm">Video episode versions</td>
+        <td>A video cut of each episode formatted for YouTube and your own site.</td>
+        <td class="req">Quote</td>
+      </tr>
+      <tr>
+        <td class="nm">Back catalog run</td>
+        <td>Older posts, webinars, and documents produced into a launch block of episodes.</td>
+        <td class="req">Quote</td>
+      </tr>
+      <tr>
+        <td class="nm">Additional episodes</td>
+        <td>Extra episodes added to any tier inside the same month.</td>
+        <td class="req">Quote</td>
+      </tr>
+      <tr>
+        <td class="nm">Show launch package</td>
+        <td>Feed setup, show description, category placement, and the first three episodes ready on day one.</td>
+        <td class="req">Quote</td>
+      </tr>
+      <tr>
+        <td class="nm">Second language edition</td>
+        <td>Every episode produced again in a second language with its own transcript.</td>
+        <td class="req">Quote</td>
+      </tr>
+      <tr>
+        <td class="nm">Event and webinar recaps</td>
+        <td>A recorded session cut into a numbered episode series with show notes.</td>
+        <td class="req">Quote</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="table-note">Ask for a quote on any add-on and we will price it against your material and your volume.</p>
+
+  <h2 class="sec-h">Questions we get before the first call</h2>
+  <div class="faq">
+    <section>
+      <h3>How fast is an episode?</h3>
+      <p>Five business days from the day your material arrives to the published episode, on every tier. Send a full month of material at once and the batch still releases on the dates you choose.</p>
+    </section>
+    <section>
+      <h3>How many revisions?</h3>
+      <p>Two rounds per episode, on every tier. One on the script before production begins, one on the finished audio after delivery. Both are inside the retainer.</p>
+    </section>
+    <section>
+      <h3>Who owns the content?</h3>
+      <p>You do. Scripts, audio files, transcripts, clips, and written versions are yours on delivery, and the show lives in your own hosting account under your name.</p>
+    </section>
+    <section>
+      <h3>What if my source material is messy?</h3>
+      <p>That is the normal starting point. A rough transcript, an unfinished draft, or a recorded webinar is enough to build from. When one piece is too thin for a full episode, we combine two or three, and you approve the direction at the script round.</p>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <div>
+      <div class="who">VocalJewelz LLC</div>
+      <div class="mail">vj.assistant.inc@gmail.com</div>
+      <div class="best">Email reaches us fastest and gets a same day reply.</div>
+    </div>
+    <div class="cta">
+      <div class="big">Email us to book a 20 minute fit call</div>
+      <div class="sub">Bring one piece of content you already published and we will map your first month of episodes on the call.</div>
+    </div>
+  </footer>
+  <p class="rates">Rates effective September 2026. Subject to change.</p>
+
+</div>
+
+</body>
+</html>
