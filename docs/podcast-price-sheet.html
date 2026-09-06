@@ -48,14 +48,14 @@
   .doclabel{font-family:var(--display);font-weight:500;font-size:8.5pt;letter-spacing:2pt;
     text-transform:uppercase;color:var(--sage);text-align:right;white-space:nowrap;}
   .tagline{font-family:var(--display);font-weight:500;font-size:12.5pt;line-height:1.3;
-    letter-spacing:0.3pt;color:var(--green);max-width:6.4in;margin:11pt 0 0;
+    letter-spacing:0.3pt;color:var(--green);max-width:6.4in;margin:9pt 0 0;
     border-left:2.5pt solid var(--sage);padding-left:11pt;}
   .positioning{font-size:11pt;line-height:1.3;max-width:6.1in;margin:6pt 0 0;color:var(--ink);}
 
   /* ---------- section headers ---------- */
   .sec-h{font-family:var(--display);font-weight:500;font-size:9pt;letter-spacing:2.6pt;
     text-transform:uppercase;color:var(--green);border-top:0.75pt solid var(--tan);
-    padding-top:4pt;margin:6pt 0 0;break-after:avoid;page-break-after:avoid;}
+    padding-top:4pt;margin:5pt 0 0;break-after:avoid;page-break-after:avoid;}
 
   /* ---------- how it works ---------- */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:4pt;}
@@ -65,8 +65,8 @@
   .step p{font-size:10.5pt;line-height:1.3;margin:0;}
 
   /* ---------- tiers ---------- */
-  .tiers{display:grid;grid-template-columns:1fr 1.2fr 1.06fr;gap:14pt;align-items:start;margin-top:4pt;}
-  .tier{display:flex;flex-direction:column;background:transparent;border:none;border-top:2pt solid var(--green);padding:8pt 0 0;
+  .tiers{display:grid;grid-template-columns:1fr 1.2fr 1.06fr;gap:14pt;align-items:start;margin-top:3pt;}
+  .tier{display:flex;flex-direction:column;background:transparent;border:none;border-top:2pt solid var(--green);padding:7pt 0 0;
     break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   .tier.growth{background:var(--green);border-top:none;color:var(--cream);padding:0 0 13pt;margin-top:-13pt;}
   .growth .badge{display:block;background:var(--sage);color:var(--green);font-family:var(--display);
@@ -76,30 +76,36 @@
   .tier .name{font-family:var(--display);font-weight:500;font-size:13pt;letter-spacing:1.6pt;
     text-transform:uppercase;color:var(--green);line-height:1;}
   .growth .name{color:var(--cream);font-size:18pt;}
-  .price{font-family:var(--display);font-weight:600;font-size:20pt;line-height:1;color:var(--ink);margin-top:4pt;}
+  .price{font-family:var(--display);font-weight:600;font-size:20pt;line-height:1;color:var(--ink);margin-top:3pt;}
   .growth .price{font-size:29pt;color:var(--cream);}
   .permo{font-size:8pt;letter-spacing:1.3pt;text-transform:uppercase;color:var(--ink-soft);margin-top:2pt;}
   .growth .permo{color:var(--sage);}
   .vol{font-family:var(--display);font-weight:500;font-size:10.5pt;letter-spacing:0.9pt;text-transform:uppercase;
     color:var(--green);border-top:0.75pt solid var(--tan);border-bottom:0.75pt solid var(--tan);
-    padding:3pt 0;margin:5pt 0;}
+    padding:3pt 0;margin:4pt 0;}
   .growth .vol{color:var(--cream);border-color:rgba(249,246,238,0.4);}
 
   .cap{font-family:var(--display);font-weight:500;font-size:8pt;letter-spacing:1pt;
-    text-transform:uppercase;color:var(--ink-soft);margin:0 0 4pt;}
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 3pt;}
   .growth .cap{color:var(--sage);}
   ul.deliv{list-style:none;padding:0;margin:0;}
-  ul.deliv li{font-size:10pt;line-height:1.2;padding-left:8pt;margin-bottom:1.8pt;position:relative;}
+  ul.deliv li{font-size:10pt;line-height:1.2;padding-left:8pt;margin-bottom:1.6pt;position:relative;}
   ul.deliv li::before{content:"";position:absolute;left:0;top:3.6pt;width:3pt;height:3pt;
     background:var(--sage);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 
-  .fit{margin-top:6pt;padding-top:6pt;border-top:0.75pt solid var(--tan);
+  .fit{margin-top:5pt;padding-top:6pt;border-top:0.75pt solid var(--tan);
     font-size:10pt;line-height:1.24;color:var(--ink-soft);}
   .growth .fit{border-color:rgba(249,246,238,0.4);color:var(--sage);margin-bottom:0;}
 
+  /* ---------- upgrade credit ---------- */
+  .upgrade{border-top:2pt solid var(--green);margin-top:5pt;padding-top:5pt;
+    font-size:10.5pt;line-height:1.32;color:var(--green);}
+  .upgrade .lbl{font-family:var(--display);font-weight:600;font-size:9pt;letter-spacing:2pt;
+    text-transform:uppercase;color:var(--green);margin-right:9pt;}
+
   /* ---------- exclusions ---------- */
   .excl{font-size:10pt;line-height:1.32;color:var(--ink-soft);border-top:0.75pt solid var(--tan);
-    margin-top:6pt;padding-top:6pt;}
+    margin-top:4pt;padding-top:4pt;}
 
   /* ---------- add-ons ---------- */
   table{width:100%;border-collapse:collapse;margin-top:8pt;}
@@ -259,14 +265,12 @@
         <li>Timestamped transcript</li>
         <li>Chapter markers</li>
         <li>Long form blog version</li>
-        <li>Short summary for your site</li>
         <li>Two newsletter drafts</li>
         <li>LinkedIn post draft</li>
         <li>Five audiograms</li>
         <li>Eight captioned clips</li>
         <li>Ten pull quote graphics</li>
         <li>Five title options</li>
-        <li>Landing page copy</li>
         <li>Upload and scheduling</li>
         <li>YouTube audio upload</li>
         <li>Monthly episode report</li>
@@ -278,6 +282,8 @@
     </div>
 
   </div>
+
+  <p class="upgrade"><span class="lbl">Upgrade credit</span>Move up any time. What you already paid this month at Starter or Growth applies to the higher tier the day you upgrade, so you pay only the difference.</p>
 
   <p class="excl">No tier includes guest booking, live recording, ad sales or sponsorship, cover art design, music licensing, or your hosting fees, and special requests can be settled before production starts.</p>
 
